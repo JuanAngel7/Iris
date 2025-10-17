@@ -28,4 +28,18 @@ Sigue estos pasos para construir la imagen de Docker y ejecutar la API en tu ent
 Abre tu terminal en el directorio raíz del proyecto y ejecuta el siguiente comando. Reemplaza `tu-usuario-docker` por tu nombre de usuario de Docker Hub y `nombre-proyecto` por el nombre que desees darle a la imagen (ej. `ml-api-demo`).
 
 ```bash
-docker build -t tu-usuario-docker/nombre-proyecto:latest .
+git clone https://github.com/JuanAngel7/Iris.git
+cd Iris
+
+Construir la imagen de Docker
+Ejecuta en la terminal de PWD:
+docker build -t iris-api .
+
+Ejecutar el contenedor
+docker run -d -p 5000:5000 iris-api
+
+probar predicción
+curl -X POST http://localhost:5000/predict \
+  -H "Content-Type: application/json" \
+  -d '{"features": [5.1, 3.5, 1.4, 0.2]}'
+
